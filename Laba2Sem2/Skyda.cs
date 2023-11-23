@@ -24,8 +24,7 @@ namespace Laba2Sem2
             KnownFalledLayers = protection.FalledLayerNumber;
             if (protection.ProtecionCheck() == false)
             {
-                ProtectionFallEventArgs aboba = new ProtectionFallEventArgs(protection.FalledLayerNumber, protection);
-                ProtectionFall(this,aboba);
+                ProtectionFall(this, new ProtectionFallEventArgs(protection.FalledLayerNumber, protection));
             }
         }
         public Skyda(ProtectionSystem protection)

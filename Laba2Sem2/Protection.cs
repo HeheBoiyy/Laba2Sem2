@@ -13,7 +13,7 @@ namespace Laba2Sem2
         public DateTime Data { get; set; }
         public int LayerNumber {  get; set; }
         public int FalledLayerNumber = 0;
-        public int PastFalledLayerNumber = 0;
+        private bool SystemDamaged = false;
         public ProtectionSystem(string title, int layerNumber)
         {
             Title = title;
@@ -24,9 +24,10 @@ namespace Laba2Sem2
         {
             DaysGone++;
             Data = Data.AddDays(1);
-            if (PastFalledLayerNumber!=FalledLayerNumber)
+            if (SystemDamaged)
             {
-                PastFalledLayerNumber = FalledLayerNumber;
+                SystemDamaged = false;
+                FalledLayerNumber++;
                 return false;
             }
             return true;
@@ -37,7 +38,7 @@ namespace Laba2Sem2
             int atacker = rnd.Next(0, 10);
             if ( atacker <= 2 )
             {
-                FalledLayerNumber++;
+                SystemDamaged = true;
             }
         }
     }
