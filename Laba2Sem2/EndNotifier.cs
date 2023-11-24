@@ -16,9 +16,10 @@ namespace Laba2Sem2
         }
         public void OnProtectionFall(object obj, ProtectionFallEventArgs protectionFallEventArgs)
         {
-            if (protectionFallEventArgs.FalledProtectionLayers == protectionFallEventArgs.protectionSystem.LayerNumber)
+            LayerReactorNumber = protectionFallEventArgs.FalledProtectionLayers;
+            if (LayerReactorNumber == protectionFallEventArgs.protectionSystem.LayerNumber)
             {
-                Message = $"{protectionFallEventArgs.protectionSystem.Title}      {protectionFallEventArgs.protectionSystem.Data}     {protectionFallEventArgs.protectionSystem.FalledLayerNumber}     Прошло дней сумарно:{protectionFallEventArgs.protectionSystem.DaysGone}";
+                Message = $"{protectionFallEventArgs.protectionSystem.Title}      {protectionFallEventArgs.protectionSystem.Data}     Слой:{LayerReactorNumber}     Прошло дней сумарно:{protectionFallEventArgs.protectionSystem.DaysGone}";
                 Console.WriteLine(Message);
             }
         }
